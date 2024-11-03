@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div>
+      <h2>Take Input of username from the user and show it in the h1 tag create a
+        table with columns s.no and name and insert 5 records into it using dom
+        methods</h2>
+    </div>
+    <h1>Enter user name</h1>
+    <button onclick="username()">DISPLAY USER</button>
+
+    <h1>Table Data</h1>
+    <div id="table2"></div>
+    <script>
+      function username() {
+        let input = prompt("Enter Username: ");
+        let user = document.getElementsByTagName("h1");
+        user[0].innerText = `Hello ${input}`;
+      }
+
+      function newtable() {
+        let table = document.createElement("table");
+        table.border = "1";
+
+        let thead = document.createElement("thead");
+        let tbhrow = document.createElement("tr");
+        let th1 = document.createElement("th");
+        th1.textContent = "Sno";
+        tbhrow.appendChild(th1);
+        let th2 = document.createElement("th");
+        th2.textContent = "Name";
+        tbhrow.appendChild(th2);
+        thead.appendChild(tbhrow);
+        table.appendChild(thead);
+
+        let tbody = document.createElement("tbody");
+
+        let data = [
+          { sNo: 1, name: "sivaji" },
+          { sNo: 2, name: "rakesh" },
+          { sNo: 3, name: "vinay" },
+          { sNo: 4, name: "pavan" },
+          { sNo: 5, name: "arun" },
+        ];
+        for (i = 0; i < data.length; i++) {
+          let tr = document.createElement("tr");
+          let td1 = document.createElement("td");
+          td1.textContent = data[i].sNo;
+          tr.appendChild(td1);
+          let td2 = document.createElement("td");
+          td2.textContent = data[i].name;
+          tr.appendChild(td2);
+          tbody.appendChild(tr);
+        }
+        table.appendChild(tbody);
+
+        document.getElementById("table2").appendChild(table);
+      }
+      newtable();
+    </script>
+  </body>
+</html>
